@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Te lo vendo</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+      
+        <script src="https://kit.fontawesome.com/21b5f4a282.js" crossorigin="anonymous"></script>
+       </head>
+<body>
+    <header class="mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <!-- Image and text -->
+            <nav class="navbar">
+                <a class="navbar-brand" href="{% url 'Home'%}">
+                <img src="./assets/img/logotelovendo.svg"  height="30" class="d-inline-block align-top" alt="">
+                                </a>
+            </nav>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'Home'%}"><i class="bi bi-house-door-fill"></i></a>
+                </li>
+                <li class="nav-item dropdown navbar-dark bg-primary">
+                  <a class="nav-link dropdown-toggle navbar-dark bg-primary" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bookmarks-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu navbar-dark bg-primary" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item bg-primary text-white" href="./prodcutos.html">
+                      <i class="fas fa-bone"></i>  Alimentos</a></li>
+                    <li><a class="dropdown-item bg-primary text-white" href="./prodcutos.html">
+                      <i class="fas fa-gift"></i>   Accesorios</a></li>
+             </ul>
+                </li>
+              
+              
+              </ul>
+              <ul class="navbar-nav my-2 my-lg-0">
+                <li class="nav-item ">
+                  <a class="nav-link mr-sm-2" href="#"><i class="bi bi-file-earmark-medical-fill"></i></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link mr-sm-2" href="./contacto.html"><i class="bi bi-telephone-fill"></i></a>
+                </li>
+                
+                <li class="nav-item ">
+                  <a class="nav-link mr-sm-2" href="#"> <i class="bi bi-cart-fill"></i></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link mr-sm-2" href="./Login.html"><i class="bi bi-people-fill bi-sm"></i></a>
+                </li>
+            
+            
+              
+                
+              </ul>
+          
+
+             
+            </div>
+          </nav>
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h3>Empresa de venta de alimentos y accesorios para mascotas.</h3>
+         
+                
+            <p>Nuestra VisiÃ³n es cumplir con la nutriciÃ³n de mascotas, animales de crianza y ganado y ser reconocidos como empresa local y nacional que cumple estÃ¡ndares de calidad y compromiso social a la comunidad.
+              </p>
+            </div>
+        </div>
+        <div class="row">
+
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{% static 'img/1m.jpg' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                     
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'img/2m.jpg' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                     
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'img/3m.jpg' %}" class="d-block w-100" alt="...">
+                 
+                    <div class="carousel-caption d-none d-md-block">
+             
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Siguiente</span>
+                </button>
+              </div>
+
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h3>Tips para el cuidado de tu mascota</h3>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+              
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos ratione, velit adipisci quis impedit possimus natus dolor non commodi voluptas veritatis obcaecati cumque tempora iure aliquam blanditiis in reiciendis consequatur?
+            </p>
+          </div>
+        </div>
+        
+      
+     
+    </main>
+
+
+    <footer class="bg-primary mt-4 text-center text-white">
+      <div id="contenedor"> 
+        <i class="bi bi-facebook"></i> <i class="bi bi-instagram"></i> <i class="bi bi-twitter"></i> -  Te lo vendo (Felipe, Simon)  - 
+
+      </div>
+      
+  </footer>
+  <div class="modal fade" id="miModal" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       <div class="modal-header bg-primary text-white">
+        Bienvenido
+       </div>
+        <div class="modal-body">
+          <h4> Te lo Vendo </h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

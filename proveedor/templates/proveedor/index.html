@@ -1,0 +1,23 @@
+{%extends "proveedor/main.html"%}   
+{% block content %}
+<h1 class="text text-danger">Cantidad de Proveedores 
+    
+     
+{{ data|length }}
+<a href="{% url 'Agregar-Provee'%}" class="btn btn-primary">Agregar</a>
+ 
+</h1>
+{%for provee in data%}
+<ul class="list-group">
+    <h2 class="text text-primary">Rut: {{provee.rut}}</h2>
+    <li class="list-group-item">Nombre: {{provee.nombre}}</li>
+    <li class="list-group-item">Dirección: {{provee.dire}}</li>
+    <li class="list-group-item">Fono: {{provee.telefono}}</li>
+  
+</ul>
+
+{%endfor%}
+
+{% endblock content%}
+
+

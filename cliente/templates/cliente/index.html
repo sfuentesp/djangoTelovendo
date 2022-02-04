@@ -1,0 +1,21 @@
+{%extends "cliente/main.html"%}   
+{% block content %}
+<h1 class="text text-danger">Listado Clientes 
+    
+     
+{{ Clientes|length }}
+ 
+</h1>
+{%for clie in Clientes%}
+<ul class="list-group">
+    <h2 class="text text-primary">{{clie.Nombre}}</h2>
+    <li class="list-group-item">ID: {{clie.ID}}</li>
+    <li class="list-group-item">Edad: {{clie.Edad}}</li>
+  
+</ul>
+
+{%endfor%}
+
+{% endblock content%}
+
+
