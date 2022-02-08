@@ -7,5 +7,5 @@ from .models import Proveedor
 class ProveeForm(forms.ModelForm):
     class Meta:
         model=Proveedor
-        fields=("rut","nombre","dire","telefono")
-        
+        fields=("rut","nombre","dire","telefono","email","username","password")
+
