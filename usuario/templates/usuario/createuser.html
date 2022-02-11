@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-<h1 class="text text-danger">Login </h1>
+<h1 class="text text-danger">Crear Usuario </h1>
     
     <form method="POST">
 
@@ -10,10 +10,10 @@
         {% csrf_token %}
         {% load crispy_forms_tags%}
         {{form|crispy}}
-        <button>Login</button>
+        <button type="submit">Guardar</button>
     </form>
-
-
     </div>
 </div>
+
+
 {% endblock content%}
