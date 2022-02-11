@@ -48,4 +48,4 @@ def bienvenido(request):
 
 def salir(request):
     logout(request)
-    return redirect("login/")
+    return redirect("/login")
