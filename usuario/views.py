@@ -1,12 +1,29 @@
 import email
 from django.shortcuts import redirect, render
-from .forms import LoginForm, UserForm
+from .forms import LoginForm, UserForm, FormUsuario
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
+
+from .models import Usuario
 # Create your views here.
 
 
+
+#creacion de usuario de la app
+def agregarUsuario(request):
+    form=FormUsuario()
+    if request.method=="POST":
+        form=FormUsuario(data=request.POST)
+        usu=form.save(commit=False)#aqui los valore estan en memoria
+        usu.save()
+        
+        return redirect('/usuarios/listado')
+    else:
+        
+        return render(request,'usuario/createUsuario.html',{"form":form})
+
+#creacion de usuario django
 def crearUsuario(request):
     if request.method=="POST":
         form = UserForm(request.POST)
@@ -22,6 +39,10 @@ def crearUsuario(request):
         form=UserForm()
         return render(request, 'usuario/createuser.html',{'form':form})
 
+def listarUser(request):
+    usu=Usuario.objects.all()
+    usu2=User.objects.all()
+    return render(request,'usuario/listarUsuarios.html',{"usu":usu,"usu2":usu2})
 
 def login(request):
     if request.method=="POST":

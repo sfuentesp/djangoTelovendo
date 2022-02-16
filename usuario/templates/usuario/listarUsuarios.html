@@ -1,0 +1,40 @@
+{%extends "home/layout.html"%}   
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+<h1 class="text text-danger">Listado de usuarios </h1>
+    
+<div class="form-gropu">
+  
+    <h4>Usuario de app usuario</h4><a href="{% url 'crear-usu-apps'%}"class="btn btn-primary">Agregar</a>
+    {% for u in usu %}
+        
+      <ul class="list-group">
+    
+      <li class="list-group-item">{{u.nombre}} {{u.apellido}} </li>
+    
+    </ul>
+  
+
+    {% endfor %}
+  
+</div>
+<hr>
+<div class="form-group">
+    <h4>Usuarios de django users</h4><a href="{% url 'crear-usu-django'%}"class="btn btn-primary">Agregar</a>
+    {% for u in usu2 %}
+    <ul class="list-group">
+    
+      <li class="list-group-item">{{u.username}} </li>
+    
+    </ul>
+    {% endfor %}
+  
+  </div>
+ 
+
+</div>
+</div>
+
+
+{% endblock content%}
