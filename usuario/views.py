@@ -1,10 +1,12 @@
-import email
+
 from django.shortcuts import redirect, render
 from .forms import LoginForm, UserForm, FormUsuario
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
-
+from .models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import CreateView,DetailView,ListView,UpdateView,DeleteView
 from .models import Usuario
 # Create your views here.
 
@@ -33,7 +35,7 @@ def crearUsuario(request):
             password=form.cleaned_data["password"]
             user= User.objects.create_user(nombre,email,password)
             user.save()
-        return redirect("/crearusuario")
+        return redirect("/usuarios/listado")
 
     else:
         form=UserForm()
@@ -55,7 +57,8 @@ def login(request):
            
             if user is not None:
                 auth_login(request,user)
-                return render(request,'usuario/bienvenida.html',{"user":user})
+                #return render(request,'usuario/bienvenida.html',{"user":user})
+                return redirect("/post")
             else:
                 return redirect("/login")
            
@@ -70,3 +73,62 @@ def bienvenido(request):
 def salir(request):
     logout(request)
     return redirect("/login")
+
+
+class PostListViews(LoginRequiredMixin,ListView):
+    
+    login_url = '/login/'
+    redirect_field_name = 'login'
+    model=Post
+    context_object_name = 'posts'
+    ordering = ['-fecha_publicacion']
+    def get_queryset(self):
+        usu=str(self.request.user)
+       
+        if usu=='telovendo':
+            
+            return Post.objects.all()
+        else:
+            
+            return Post.objects.filter(autor=self.request.user)
+
+class PostCreateView(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'login'
+    model = Post
+    fields = ['titulo','comentario']
+    
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.autor:
+            return True
+        return False
+
+class PostDetailView(DetailView):
+    model=Post
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'login'
+    model = Post
+    fields = ['titulo','comentario']
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.autor:
+            return True
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin ,DeleteView):
+    login_url = '/login/'
+    redirect_field_name = 'login'
+
+    model = Post
+    success_url='/post'
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.autor:
+            return True
