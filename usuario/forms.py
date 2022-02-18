@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import fields
-from .models import Usuario
+from .models import Usuario, Proveedor
 
 
 
@@ -18,3 +18,9 @@ class FormUsuario(forms.ModelForm):
     class Meta:
         model=Usuario
         fields=('rut','nombre','apellido','edad')
+
+class FormProveedor(forms.ModelForm):
+    class Meta:
+        model=Proveedor
+        fields=('rut','nombre','personacontacto','telefono','region','comuna','direccion')
+

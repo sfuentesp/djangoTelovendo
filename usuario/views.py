@@ -1,10 +1,11 @@
 
+from unicodedata import category
 from django.shortcuts import redirect, render
 from .forms import LoginForm, UserForm, FormUsuario
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post, Proveedor,Categoria,SubCategoria
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView,DetailView,ListView,UpdateView,DeleteView
 from .models import Usuario
@@ -132,3 +133,36 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin ,DeleteView):
         post = self.get_object()
         if self.request.user == post.autor:
             return True
+
+
+
+
+
+class ProveedorCreateView(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'login'
+    template_name='usuario/proveedor_form.html'
+    model = Proveedor
+    fields = ['rut','nombre','personacontacto','telefono','region','comuna','direccion','categoria','subcategoria']
+    
+    success_url='/proveedor'
+
+class CategoriaCreateView(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'login'
+    template_name='usuario/categoria_form.html'
+    model = Categoria
+    fields = ['nombre']
+    
+    success_url='/categoria'
+
+class SubCategoriaCreateView(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'login'
+    template_name='usuario/subCategoria_form.html'
+    model = SubCategoria
+    fields = ['nombre','categoria']
+    
+    success_url='/subcategoria'
+
+    
