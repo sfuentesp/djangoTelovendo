@@ -1,30 +1,30 @@
 
 from unicodedata import category
 from django.shortcuts import redirect, render
-from .forms import LoginForm, UserForm, FormUsuario
+from .forms import LoginForm, UserForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Post, Proveedor,Categoria,SubCategoria
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView,DetailView,ListView,UpdateView,DeleteView
-from .models import Usuario
+
 # Create your views here.
 
 
 
-#creacion de usuario de la app
-def agregarUsuario(request):
-    form=FormUsuario()
-    if request.method=="POST":
-        form=FormUsuario(data=request.POST)
-        usu=form.save(commit=False)#aqui los valore estan en memoria
-        usu.save()
+# #creacion de usuario de la app
+# def agregarUsuario(request):
+#     form=FormUsuario()
+#     if request.method=="POST":
+#         form=FormUsuario(data=request.POST)
+#         usu=form.save(commit=False)#aqui los valore estan en memoria
+#         usu.save()
         
-        return redirect('/usuarios/listado')
-    else:
+#         return redirect('/usuarios/listado')
+#     else:
         
-        return render(request,'usuario/createUsuario.html',{"form":form})
+#         return render(request,'usuario/createUsuario.html',{"form":form})
 
 #creacion de usuario django
 def crearUsuario(request):
@@ -43,9 +43,9 @@ def crearUsuario(request):
         return render(request, 'usuario/createuser.html',{'form':form})
 
 def listarUser(request):
-    usu=Usuario.objects.all()
+   
     usu2=User.objects.all()
-    return render(request,'usuario/listarUsuarios.html',{"usu":usu,"usu2":usu2})
+    return render(request,'usuario/listarUsuarios.html',{"usu2":usu2})
 
 def login(request):
     if request.method=="POST":
@@ -128,15 +128,13 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin ,DeleteView):
     redirect_field_name = 'login'
 
     model = Post
-    success_url='/post'
+    
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.autor:
             return True
 
-
-
-
+    success_url='/post'
 
 class ProveedorCreateView(LoginRequiredMixin,CreateView):
     login_url = '/login/'
@@ -146,6 +144,18 @@ class ProveedorCreateView(LoginRequiredMixin,CreateView):
     fields = ['rut','nombre','personacontacto','telefono','region','comuna','direccion','categoria','subcategoria']
     
     success_url='/proveedor'
+
+class ProveedorListViews(LoginRequiredMixin,ListView):
+    
+    login_url = '/login/'
+    redirect_field_name = 'login'
+
+    template_name='usuario/proveedor_list.html'
+    model=Proveedor
+    context_object_name = 'proveedores'
+   
+    
+
 
 class CategoriaCreateView(LoginRequiredMixin,CreateView):
     login_url = '/login/'

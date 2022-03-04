@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import fields
-from .models import Usuario, Proveedor
+from .models import  Proveedor
 
 
 
@@ -14,10 +14,10 @@ class LoginForm(forms.Form):
     password=forms.CharField(widget=forms.PasswordInput)
 
 
-class FormUsuario(forms.ModelForm):
-    class Meta:
-        model=Usuario
-        fields=('rut','nombre','apellido','edad')
+# class FormUsuario(forms.ModelForm):
+#     class Meta:
+#         model=Usuario
+#         fields=('rut','nombre','apellido','edad')
 
 class FormProveedor(forms.ModelForm):
     class Meta:

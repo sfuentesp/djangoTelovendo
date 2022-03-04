@@ -1,16 +1,16 @@
-{%extends "home/layout.html"%}   
+{%extends "home/layout2.html"%}   
 {% block content %}
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
 <h1 class="text text-danger">Ingresar Nuevo Producto </h1>
     
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
 
 
         {% csrf_token %}
         {% load crispy_forms_tags%}
         {{form|crispy}}
-        <button>Crear</button>
+        <button class="btn btn-primary">Crear</button>
     </form>
 
 

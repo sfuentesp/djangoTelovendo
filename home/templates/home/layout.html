@@ -43,14 +43,19 @@
               </ul>
               <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item ">
-                  <a class="nav-link mr-sm-2" href="{% url 'crear-usu' %}"><i class="bi bi-file-earmark-medical-fill"></i></a>
+                  <a class="nav-link mr-sm-2" href="{% url 'crear-usu-django' %}"><i class="bi bi-file-earmark-medical-fill"></i></a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link mr-sm-2" href="#"><i class="bi bi-telephone-fill"></i></a>
+                  <a class="nav-link mr-sm-2" href="#"> 
+                    <i class="bi bi-telephone-fill"></i>
+                  
+                  </a>
                 </li>
                 
                 <li class="nav-item ">
-                  <a class="nav-link mr-sm-2" href="#"> <i class="bi bi-cart-fill"></i></a>
+                  <a class="nav-link mr-sm-2" href="#"> 
+                    <span class='badge badge-warning' id='lblCartCount'> {{valor}} </span> 
+                    <i class="bi bi-cart-fill"></i></a>
                 </li>
                 <li class="nav-item ">
                   <a class="nav-link mr-sm-2" href="{% url 'login'%}"><i class="bi bi-people-fill bi-sm"></i></a>
@@ -67,13 +72,7 @@
           </nav>
     </header>
 
-    <main class="container">
-    
-      
-     
-    </main>
-
-    <main class="container">
+    <main class="container bg-light">
     
         {% block content %}{%endblock%}
      

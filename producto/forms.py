@@ -9,7 +9,7 @@ from .models import Producto
 class ProductosForm(forms.ModelForm):
     class Meta:
         model=Producto
-        fields=("sku","nombre","proveedor","cantidad","precio")
+        fields=("sku","nombre","proveedor","cantidad","precio","imagen")
 
 
 

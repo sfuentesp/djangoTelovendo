@@ -34,24 +34,37 @@
                   </a>
                   <ul class="dropdown-menu navbar-dark bg-primary" aria-labelledby="navbarScrollingDropdown">
                     <li><a class="dropdown-item bg-primary text-white" href="{% url 'producto-listado' %}">
-                      Productos</a></li>
-                      <li><a class="dropdown-item bg-primary text-white" href="{% url 'proveedor-create' %}">
-                        Proveedores</a></li>
-                        <li><a class="dropdown-item bg-primary text-white" href="#">
-                          Clientes</a></li>
-                          <li><a class="dropdown-item bg-primary text-white" href="{% url 'categoria-create' %}">
-                            Categoria</a></li>
-                            <li><a class="dropdown-item bg-primary text-white" href="{% url 'subcategoria-create' %}">
-                              Sub-Categoria</a></li>
-                    <!-- <li><a class="dropdown-item bg-primary text-white" href="#">
-                      <i class="fas fa-gift"></i>   Accesorios</a></li> -->
+                 </a></li>
              </ul>
                 </li>
-              
-              
+                            
               </ul>
               <ul class="navbar-nav my-2 my-lg-0">
              
+                <li class="nav-item dropdown navbar-dark bg-primary active">
+                  <a class="nav-link dropdown-toggle navbar-dark bg-primary" href="#" id="navbarScrollingDropdown" 
+                  role="button" data-toggle="dropdown" aria-expanded="false">
+                  <label>Administración</label>   <i class="bi bi-receipt"></i>
+                  </a>
+              
+                    <ul class="dropdown-menu navbar-dark bg-primary" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item bg-primary text-white" href="{% url 'usuarios-listado' %}">
+                        Usuario</a></li>
+                      <li><a class="dropdown-item bg-primary text-white" href="{% url 'producto-listado' %}">
+                      Productos</a></li>
+                      <li><a class="dropdown-item bg-primary text-white" href="{% url 'proveedor-listado' %}">
+                      Proveedores</a></li>
+                      <li><a class="dropdown-item bg-primary text-white" href="#">
+                      Clientes</a></li>
+                      <li><a class="dropdown-item bg-primary text-white" href="{% url 'categoria-create' %}">
+                      Categoria</a></li>
+                      <li><a class="dropdown-item bg-primary text-white" href="{% url 'subcategoria-create' %}">
+                      Sub-Categoria</a></li>
+
+                        
+                    </ul>
+                </li>
+            
                 <li class="nav-item dropdown navbar-dark bg-primary active">
                   <a class="nav-link dropdown-toggle navbar-dark bg-primary" href="#" id="navbarScrollingDropdown" 
                   role="button" data-toggle="dropdown" aria-expanded="false">
@@ -64,7 +77,6 @@
                     </ul>
                 </li>
             
-            
               
                 
               </ul>
@@ -75,13 +87,7 @@
           </nav>
     </header>
 
-    <main class="container">
-    
-      
-     
-    </main>
-
-    <main class="container">
+    <main class="container bg-light">
     
         {% block content %}{%endblock%}
      

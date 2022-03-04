@@ -6,12 +6,6 @@ from django.urls import reverse
 # Create your models here.
 
 
-class Usuario(models.Model):
-    rut=models.CharField(max_length=10)
-    nombre=models.CharField(max_length=50)
-    apellido=models.CharField(max_length=50)
-    edad=models.IntegerField()
-
 class Post(models.Model):
     titulo = models.CharField(max_length=100)
     comentario = models.TextField()
@@ -45,3 +39,6 @@ class Proveedor(models.Model):
     direccion=models.CharField('Dirección',max_length=200)
     categoria=models.ForeignKey(Categoria,null=True, on_delete=models.SET_NULL)
     subcategoria=models.ForeignKey(SubCategoria, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.nombre

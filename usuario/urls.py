@@ -1,6 +1,6 @@
 from django import views
 from django.urls import path
-from .views import SubCategoriaCreateView,CategoriaCreateView, PostCreateView,PostDetailView,PostListViews,PostUpdateView,PostDeleteView, ProveedorCreateView
+from .views import ProveedorListViews, SubCategoriaCreateView,CategoriaCreateView, PostCreateView,PostDetailView,PostListViews,PostUpdateView,PostDeleteView, ProveedorCreateView
 from . import views
 urlpatterns=[
    
@@ -8,8 +8,8 @@ urlpatterns=[
         path('logout/', views.salir, name="logout-usu"),
         path('bienvenido/', views.bienvenido),
         path('crearusuarioDjango/',views.crearUsuario,name="crear-usu-django"),
-        path('crearusuarioApps/',views.agregarUsuario,name="crear-usu-apps"),
-        path('usuarios/listado',views.listarUser,name="crear-usu"),
+     
+        path('usuarios/listado',views.listarUser,name="usuarios-listado"),
 
         path('post', PostListViews.as_view(), name = 'post-list' ),
         path('post/nuevo', PostCreateView.as_view(), name = 'post-create' ),
@@ -18,7 +18,8 @@ urlpatterns=[
         path('post/<int:pk>/delete', PostDeleteView.as_view(), name = 'post-delete'),
 
         
-        path('proveedor', ProveedorCreateView.as_view(), name = 'proveedor-create' ),
+        path('proveedor', ProveedorListViews.as_view(), name = 'proveedor-listado' ),
+        path('proveedor/nuevo', ProveedorCreateView.as_view(), name = 'proveedor-create' ),
         
         path('categoria', CategoriaCreateView.as_view(), name = 'categoria-create' ),
         
