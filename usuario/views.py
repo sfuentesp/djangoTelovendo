@@ -166,6 +166,15 @@ class CategoriaCreateView(LoginRequiredMixin,CreateView):
     
     success_url='/categoria'
 
+class CategoriaListViews(LoginRequiredMixin,ListView):
+    
+    login_url = '/login/'
+    redirect_field_name = 'login'
+
+    template_name='usuario/categoria_list.html'
+    model=Categoria
+    context_object_name = 'categoria'
+
 class SubCategoriaCreateView(LoginRequiredMixin,CreateView):
     login_url = '/login/'
     redirect_field_name = 'login'
@@ -174,5 +183,14 @@ class SubCategoriaCreateView(LoginRequiredMixin,CreateView):
     fields = ['nombre','categoria']
     
     success_url='/subcategoria'
+
+class SubCategoriaListViews(LoginRequiredMixin,ListView):
+    
+    login_url = '/login/'
+    redirect_field_name = 'login'
+
+    template_name='usuario/subcategoria_list.html'
+    model=SubCategoria
+    context_object_name = 'subcategoria'
 
     
